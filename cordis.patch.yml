@@ -1,0 +1,5 @@
+# dsh-artifacts bundle patch: one host row (the tool, its prompt and routes);
+# the client face (web/client.js) adds the chat card and the side panel.
+- insert:
+    - id: dsh-artifacts
+      name: dsh-artifacts

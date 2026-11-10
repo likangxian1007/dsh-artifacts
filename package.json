@@ -1,0 +1,47 @@
+{
+  "name": "dsh-artifacts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Claude-style Artifacts for DeepSeek Harness: the model creates and updates interactive artifacts (React, HTML, SVG, Mermaid, Markdown, code) that open in a side panel beside the conversation, stream as they are written and keep every version.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./client": "./web/client.js"
+  },
+  "files": [
+    "src",
+    "web",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=24",
+    "dsh": ">=0.2.0-rc.2"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-tool",
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test --test-timeout=120000 \"test/**/*.test.mjs\"",
+    "e2e": "node test/e2e.mjs",
+    "install-plugin": "node scripts/install.mjs --profile web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/likangxian1007/dsh-artifacts"
+  }
+}
